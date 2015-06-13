@@ -17,7 +17,7 @@
 	.signin-twitter {
 		height: 50px;
 		min-width: 300px;
-		overflow: hidden;
+		//overflow: hidden;
 		display: inline-block;
 		line-height: 20px;
 		color: white;
@@ -50,6 +50,8 @@
 			}
 		}
 	}
+
+.dropdown.user.user-menu span { color: white;}
 /* Old styles */
 
 body {
