@@ -1,3 +1,6 @@
+'use strict';
+
+
 var controllersModule = require('./_index');
 
 function tweetCtrl($http, AppSettings, SearchService, hello) { // jshint ignore:line
