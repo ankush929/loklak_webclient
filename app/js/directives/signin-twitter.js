@@ -4,7 +4,7 @@ var directivesModule = require('./_index.js');
 
 
 
-directivesModule.directive('signinTwitter', ['$rootScope', 'HelloService', 'AppSettings', function($rootScope, HelloService, AppSettings) {
+directivesModule.directive('signinTwitter', ['$timeout', '$rootScope', 'HelloService', 'AppSettings', function($timeout, $rootScope, HelloService, AppSettings) {
 	return {
 		scope: {
 			hello: '=',
@@ -47,6 +47,20 @@ directivesModule.directive('signinTwitter', ['$rootScope', 'HelloService', 'AppS
 			}, function() {
 					console.log("Signed out failed, try again later");
 			});   
+		},
+		link: function(scope) {
+			var hello = scope.hello;
+			var isOnline = hello('twitter').getAuthResponse();
+
+			$timeout(function() {
+				if (!isOnline) {
+					$('#signupModal').modal('show');	
+				}
+			});
+
+			hello.on('auth.login', function(auth) {
+				angular.element('.modal-backdrop').remove();
+			});
 		}
 	};
 }]);
