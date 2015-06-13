@@ -52,10 +52,10 @@ directivesModule.directive('signinTwitter', ['$timeout', '$rootScope', 'HelloSer
 			var hello = scope.hello;
 			var isOnline = hello('twitter').getAuthResponse();
 
-			$timeout(function() {
+			angular.element(document).ready(function() {
 				if (!isOnline) {
 					$('#signupModal').modal('show');	
-				}
+				}	
 			});
 
 			hello.on('auth.login', function(auth) {
